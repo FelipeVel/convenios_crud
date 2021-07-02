@@ -20,11 +20,12 @@ func init() {
 // Run the migrations
 func (m *CrearTablaPaisCategoria_20210701_215525) Up() {
 	// use m.SQL("CREATE TABLE ...") to make schema update
-
+	m.SQL("CREATE TABLE convenio.pais_categoria(id serial NOT NULL, pais integer, CONSTRAINT pk_pais_categoria PRIMARY KEY (id));")
+	m.SQL("ALTER TABLE convenio.pais_categoria OWNER TO postgres;")
 }
 
 // Reverse the migrations
 func (m *CrearTablaPaisCategoria_20210701_215525) Down() {
 	// use m.SQL("DROP TABLE ...") to reverse schema update
-
+	m.SQL("DROP TABLE IF EXISTS convenio.pais_categoria")
 }
